@@ -31,7 +31,7 @@ df = pd.concat([df1, df2, df3], axis=1)
 pd.set_option('display.unicode.east_asian_width', True)
 
 # 데이터프레임 출력
-display(df)
+#display(df)
 
 # 발생량 대비 재활용 비율 계산을 위해 df_without_total을 다시 정의합니다.
 df_without_total = df2[df2['지역'] != '합계']
@@ -41,36 +41,3 @@ df_without_total['생활폐기물 재활용 비율'] = df_without_total['생활�
 
 # 결과 출력
 print(df_without_total[['지역', '생활폐기물 발생량', '생활폐기물 재활용량', '생활폐기물 재활용 비율']])
-
-import matplotlib.pyplot as plt
-from matplotlib import font_manager
-
-# 폰트 경로 및 파일명 설정
-font_path = 'C:\\Users\\admin\\Desktop\\나눔 글꼴\\나눔고딕\\NanumFontSetup_TTF_GOTHIC\\NanumGothic.ttf'
-
-# 폰트 로드
-font_prop = font_manager.FontProperties(fname=font_path)
-
-# 그래프 크기 조정
-plt.figure(figsize=(10, 6))
-
-# 그래프 그리기
-plt.bar(df_without_total['지역'][1:], df_without_total['생활폐기물 재활용 비율'][1:])
-
-# x축 라벨 설정
-plt.xlabel('지역', fontproperties=font_prop, fontsize=10, rotation=45, ha='right')
-
-# y축 라벨 설정
-plt.ylabel('생활폐기물 발생량 대비 재활용 비율', fontproperties=font_prop, fontsize=10)
-
-# x축 눈금 라벨 크기 조정
-plt.xticks(df_without_total['지역'][1:], df_without_total['지역'][1:], fontproperties=font_prop, fontsize=8)
-
-# 그래프 제목 설정
-plt.title('생활폐기물 발생량 대비 생활폐기물 재활용 비율', fontproperties=font_prop, fontsize=12)
-
-# 그래프 여백 및 글자 간격 조정
-plt.tight_layout()
-
-# 그래프 보여주기
-plt.show()
